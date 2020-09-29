@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Gymific</string>
+    <string name="action_start">Start</string>
+
+    <string name="content_description_category_arms">Arms category image</string>
+    <string name="content_description_category_cardio">Cardio category image</string>
+    <string name="content_description_category_workout">Workout image</string>
+    <string name="content_description_tag">Tabs for workout selection</string>
+    <string name="content_description_play">Play button</string>
+    <string name="content_description_stop">Stop button</string>
+    <string name="content_description_pause">Pause button</string>
+
+
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Home</string>
+    <string name="title_sort_order">Sort order</string>
+    <string name="title_workout">Workout</string>
+    <string name="title_arms">Arms</string>
+    <string name="title_favourite">Favourite</string>
+    <string name="title_cardio">Cardio</string>
+    <string name="title_legs">Legs</string>
+    <string name="title_detail">Detail</string>
+    <string name="title_set_favourite">Set favourite</string>
+    <string name="title_sort_date">Newest first</string>
+    <string name="title_sort_name">Sort by name</string>
+    <string name="title_sort_category">Sort by category</string>
+    <string name="title_sort_training_time">Sort by training time</string>
+    <string name="recommended">Recommended</string>
+    <string name="categories">Categories</string>
+
+
+</resources>

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "cardio",
+    "title": "Cardio",
+    "overview": "Any type of exercise that gets your heart rate up.",
+    "description": "A stronger cardio-vascular system means more capillaries delivering more oxygen to cells in your muscles. This enables your cells to burn more fat during both exercise and inactivity. Cardio exercise uses large muscle movement over a sustained period of time keeping your heart rate to at least 50% of its maximum level."
+  },
+  {
+	  "id": "legs",
+         "title": "Legs",
+         "overview": "Leg exercises target body’s biggest muscles.",
+         "description": "Training legs means burning more calories, elevating your T-levels, boosting your big lifts, improving your mobility, and, of course, building strength, power and mass. If you want to tone your legs, follow our exercises everyday."
+  },
+  {
+	  "id": "arms",
+         "title": "Arms",
+         "overview": "For a well-rounded routine, it is best to perform a variety of movements at each joint.",
+         "description": "If you want to train your arms, you can’t just train your arms. To progress with your arm exercises you also need to build strength in other parts of the body otherwise some exercises become too tough."
+
+  }
+]

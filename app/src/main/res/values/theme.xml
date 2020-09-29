@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="GymificTheme" parent="Theme.MaterialComponents.DayNight">
+        <!-- App colors -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSurface">@color/colorWhite</item>
+
+        <!-- Changed navigation ans status bar color -->
+        <item name="android:navigationBarColor">@color/colorBlack</item>
+        <item name="android:statusBarColor">@color/colorWhite</item>
+
+        <!-- Components -->
+        <item name="bottomNavigationStyle">@style/Widget.Gymific.BottomNavigationView</item>
+        <item name="toolbarStyle">@style/Widget.Gymific.Toolbar</item>
+        <item name="materialCardViewStyle">@style/Widget.Gymific.Cardview</item>
+    </style>
+</resources>
+
+<!-- Theme.MaterialComponents.DayNight -->

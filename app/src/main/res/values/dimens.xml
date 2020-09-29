@@ -1,0 +1,18 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="plain_0">0dp</dimen>
+    <dimen name="dim_0_5">4dp</dimen>
+    <dimen name="dim_1">8dp</dimen>
+    <dimen name="dim_1_5">12dp</dimen>
+    <dimen name="dim_2">16dp</dimen>
+    <dimen name="cat_img_height">194dp</dimen>
+    <dimen name="detail_img_height">230dp</dimen>
+    <dimen name="workout_img_height">100dp</dimen>
+    <dimen name="workou_img_height_small">62dp</dimen>
+    <dimen name="dim_0_2_5">2dp</dimen>
+    <dimen name="dim_3">24dp</dimen>
+    <dimen name="dim_5">40dp</dimen>
+
+</resources>

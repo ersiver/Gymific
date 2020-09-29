@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.ersiver.gymific.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/view_pager_fragment"
+        android:name="com.ersiver.gymific.ui.viewpager.ViewPagerFragment"
+        android:label="@string/title_workout"
+        tools:layout="@layout/fragment_view_pager">
+        <action
+            android:id="@+id/action_navigation_workout_to_navigation_detail"
+            app:destination="@id/navigation_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_favourite"
+        android:name="com.ersiver.gymific.ui.favourite.FavouriteFragment"
+        android:label="@string/title_favourite"
+        tools:layout="@layout/fragment_favourite">
+        <action
+            android:id="@+id/action_navigation_favourite_to_detailFragment"
+            app:destination="@id/navigation_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_detail"
+        android:name="com.ersiver.gymific.ui.detail.DetailFragment"
+        android:label="@string/title_detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="workout"
+            app:argType="com.ersiver.gymific.model.Workout" />
+    </fragment>
+
+</navigation>

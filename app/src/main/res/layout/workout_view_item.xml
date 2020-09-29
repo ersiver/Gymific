@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="workout"
+            type="com.ersiver.gymific.model.Workout" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/workout_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/colorBackground"
+        android:foreground="?attr/selectableItemBackground"
+        android:minHeight="?attr/listPreferredItemHeight"
+        android:onClick="@{clickListener}"
+        android:paddingStart="@dimen/dim_2"
+        android:paddingTop="@dimen/dim_1_5"
+        android:paddingEnd="@dimen/dim_2"
+        android:paddingBottom="@dimen/dim_1_5">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/workout_image"
+            android:layout_width="@dimen/workou_img_height_small"
+            android:layout_height="@dimen/workou_img_height_small"
+            android:contentDescription="@string/content_description_category_workout"
+            android:scaleType="centerCrop"
+            app:srcImage="@{workout.iconCode}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+            tools:src="@drawable/arms_a" />
+
+        <TextView
+            android:id="@+id/workout_title"
+            android:layout_width="@dimen/plain_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_2"
+            android:ellipsize="end"
+            android:text="@{workout.title}"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toTopOf="@+id/workout_category"
+            app:layout_constraintEnd_toStartOf="@id/workout_time"
+            app:layout_constraintStart_toEndOf="@id/workout_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Crunch" />
+
+        <TextView
+            android:id="@+id/workout_category"
+            android:layout_width="@dimen/plain_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_2"
+            android:ellipsize="end"
+            android:text="@{workout.category}"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/workout_time"
+            app:layout_constraintStart_toEndOf="@id/workout_image"
+            app:layout_constraintTop_toBottomOf="@+id/workout_title"
+            tools:text="Abs" />
+
+        <TextView
+            android:id="@+id/workout_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:timeFormatted="@{workout.time}"
+            app:layout_constraintBaseline_toBaselineOf="@id/workout_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="1min" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
