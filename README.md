@@ -1,5 +1,5 @@
 # Gymific
-<img src="/previews/preview_1.gif" align="right" width="33%"/>
+<img src="/previews/preview_2.gif" align="right" width="33%"/>
 
 Gymific is a home workout app illustrating Android development best practices: Hilt, Preferences DataStore, WorkManager, DataBinding, Kotlin Coroutines & Flow.
 
@@ -25,8 +25,7 @@ Gymific is a home workout app illustrating Android development best practices: H
   - Dagger-Hilt for dependency injection.
   
 ### Third party:
-<img src="/previews/preview_2.gif" align="right" width="33%"/>
-
+<img src="/previews/preview_1.gif" align="right" width="33%"/>
   - Kotlin Coroutines and Flow for managing background threads with simplified code and reducing needs for callbacks
   - Timber for logs.
   
@@ -45,9 +44,9 @@ Gymific is a home workout app illustrating Android development best practices: H
 + The detail screen demonstrates custom ProgressBar with gradient ring.
 + The buttons, menus and progress indicators are customized for colors and shapes.
 + All clickable components behave intuitively changing their appearance when they are pressed.
-
-## Preview
-<img src="/previews/preview_3.gif" align="right" width="33%"/>
                                   
 ## Resource
 Gymific uses graphic resources from [freepik](https://www.freepik.com).
+
+## Preview
+<img src="/previews/preview_3.gif" align="left" width="33%"/>
