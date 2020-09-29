@@ -48,8 +48,6 @@ Gymific is a home workout app illustrating Android development best practices: H
 
 ## Preview
 <img src="/previews/preview_3.gif" align="right" width="33%"/>
-
-<img src="/previews/screen_1.png" width="33%" /> <img src="/previews/screenshot_2.png" width="33%" /> <img src="/previews/screenshot_3.png" width="33%"/>
                                   
 ## Resource
 Gymific uses graphic resources from [freepik](https://www.freepik.com).
