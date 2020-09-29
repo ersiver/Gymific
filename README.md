@@ -27,7 +27,7 @@ Gymific is a home workout app illustrating Android development best practices: H
 ### Third party:
 <img src="/previews/preview_2.gif" align="right" width="33%"/>
 
-  - Kotlin Coroutines  and Flow for managing background threads with simplified code and reducing needs for callbacks
+  - Kotlin Coroutines and Flow for managing background threads with simplified code and reducing needs for callbacks
   - Timber for logs.
   
 ### Architecture:
@@ -47,6 +47,8 @@ Gymific is a home workout app illustrating Android development best practices: H
 + All clickable components behave intuitively changing their appearance when they are pressed.
 
 ## Preview
+<img src="/previews/preview_3.gif" align="right" width="33%"/>
+
 <img src="/previews/screen_1.png" width="33%" /> <img src="/previews/screenshot_2.png" width="33%" /> <img src="/previews/screenshot_3.png" width="33%"/>
                                   
 ## Resource
