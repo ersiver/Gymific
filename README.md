@@ -4,12 +4,12 @@
 Gymific is a home workout app illustrating Android development best practices: Hilt, Preferences DataStore, WorkManager, DataBinding, Kotlin Coroutines & Flow.
 
 ## Overview
-  + Gymific has 3 main destinations that can be accessible from anywhere in the app by the Bottom Navigation set with Navigation Components.
-  + The Home and Workout screens start with lists of <b>pre-populated data</b>. Loading raw data into Room database is scheduled with <b>WorkManager's OneTimeWorkRequest</b>.
-  + The Workout screen consists of <b>ViewPager2 with Tabs</b> that organize workouts across 3 different screens basing on workout's categories.
-  + The Favourite screen displays list of user's selections. The list of favourite has an option to sort data. UserPreferenceRepository class holds the sort order, defined as an enum. The current sort order is saved in <b>Jetpack DataStore</b>.
-  + The Detail screen demonstrates <b>custom ProgressBar</b> that displays running time in the center of the "moving" ring.
-  + WorkoutRepository is responsible for providing the workouts and exposes it via <b>Flow</b> and <b>LiveData</b>.
+  + Gymific has 3 main destinations that can be accessible from anywhere in the app by the ```Bottom Navigation``` set with Navigation Components.
+  + The Home and Workout screens start with lists of pre-populated data. Loading raw data into Room database is scheduled with WorkManager's ```OneTimeWorkRequest```.
+  + The Workout screen consists of ```ViewPager2``` with Tabs that organize workouts across 3 different screens basing on workout's categories.
+  + The Favourite screen displays list of user's selections. The list of favourite has an option to sort data. UserPreferenceRepository class holds the sort order, defined as an enum. The current sort order is saved in ```Jetpack DataStore```.
+  + The Detail screen demonstrates ustom ProgressBar that displays running time in the center of the "moving" ring.
+  + WorkoutRepository is responsible for providing the workouts and exposes it via ```Flow``` and ```LiveData```.
   + Data Binding Library is used to display recurrent lists and workout details, handle clickListeners and manage buttons behaviours. Where data binding was not an intuitive option, the UI components were bind programmatically.
 
 ## Tech stack & Open-source libraries
