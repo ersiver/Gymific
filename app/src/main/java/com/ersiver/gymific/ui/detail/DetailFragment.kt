@@ -13,8 +13,6 @@ import androidx.navigation.fragment.navArgs
 import com.ersiver.gymific.R
 import com.ersiver.gymific.databinding.FragmentDetailBinding
 import com.ersiver.gymific.model.Workout
-import com.ersiver.gymific.util.disabledAndFade
-import com.ersiver.gymific.util.enabledAndOpaque
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,7 +42,6 @@ class DetailFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setupToolbarWithNavigation()
         onOptionsItemSelected()
-
         detailViewModel.start(workout.id)
 
         detailViewModel.workout.observe(viewLifecycleOwner) {workout ->
@@ -53,40 +50,11 @@ class DetailFragment : Fragment() {
         }
 
         detailViewModel.workoutTimeMillis.observe(viewLifecycleOwner) {
-            binding.workoutProgress.setWorkoutTime(it)
+           binding.workoutProgress.setWorkoutTime(it)
         }
 
-        detailViewModel.timeRemainingMilis.observe(viewLifecycleOwner) {
+        detailViewModel.timeRemainingMillis.observe(viewLifecycleOwner) {
             binding.workoutProgress.updateProgressBar(it)
-        }
-
-        detailViewModel.timerStatus.observe(viewLifecycleOwner) { timerStatus ->
-            if (timerStatus != null)
-                when (timerStatus) {
-                    TimerStatus.OFF -> {
-                        binding.apply {
-                            playButton.enabledAndOpaque()
-                            stopButton.disabledAndFade()
-                            pauseButton.disabledAndFade()
-                        }
-                    }
-
-                    TimerStatus.ON -> {
-                        binding.apply {
-                            playButton.disabledAndFade()
-                            stopButton.enabledAndOpaque()
-                            pauseButton.enabledAndOpaque()
-                        }
-                    }
-
-                    TimerStatus.PAUSED -> {
-                        binding.apply {
-                            playButton.enabledAndOpaque()
-                            stopButton.enabledAndOpaque()
-                            pauseButton.disabledAndFade()
-                        }
-                    }
-                }
         }
     }
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.ersiver.gymific.ui.detail.DetailViewModel" />
@@ -95,10 +96,12 @@
                                 android:contentDescription="@string/content_description_play"
                                 android:onClick="@{()->viewModel.startTimer()}"
                                 android:padding="@dimen/dim_1"
-                                android:src="@drawable/ic_play" />
+                                android:src="@drawable/ic_play"
+                                app:playButtonEnable="@{viewModel.timerStatus}" />
 
                             <ImageButton
                                 android:id="@+id/pause_button"
+                                pauseButtonEnable="@{viewModel.timerStatus}"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="?android:selectableItemBackground"
@@ -109,6 +112,7 @@
 
                             <ImageButton
                                 android:id="@+id/stop_button"
+                                stopButtonEnable="@{viewModel.timerStatus}"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="?android:selectableItemBackground"

@@ -14,22 +14,22 @@ enum class TimerStatus {
 
 class DetailViewModel @ViewModelInject constructor(private val repository: WorkoutRepository) :
     ViewModel() {
-    private var workoutSource: LiveData<Workout> = MutableLiveData()
-    private val _workout = MediatorLiveData<Workout>()
-    val workout: LiveData<Workout> = _workout
-
     private lateinit var timer: CountDownTimer
 
-    private val _workoutTimeMillis = MutableLiveData<Long>()
-    val workoutTimeMillis: LiveData<Long>
-        get() = _workoutTimeMillis
+    private val workoutId = MutableLiveData<Int>()
 
-    private val _pausedWorkoutTimeMilis = MutableLiveData<Long>()
+    private var _workout = workoutId.switchMap { repository.getWorkout(it) }
+    val workout: LiveData<Workout> = _workout
 
-    //Represent time to be displayed on the progress bar.
-    private val _timeRemainingMilis = MutableLiveData<Long>()
-    val timeRemainingMilis: LiveData<Long>
-        get() = _timeRemainingMilis
+    val _workoutTimeMillis = MutableLiveData<Long>()
+    val workoutTimeMillis: LiveData<Long> = _workoutTimeMillis
+
+    //Data displayed in the center of the circular ProgressBar.
+    private val _timeRemainingMillis = MutableLiveData<Long>()
+    val timeRemainingMillis: LiveData<Long> = _timeRemainingMillis
+
+    //Value saved once the pause is clicked.
+    private val _pausedWorkoutTimeMillis = MutableLiveData<Long>()
 
     //Responsible for the behaviours of play, pause and stop buttons.
     private val _timerStatus = MutableLiveData<TimerStatus>().apply {
@@ -37,26 +37,18 @@ class DetailViewModel @ViewModelInject constructor(private val repository: Worko
     }
     val timerStatus: LiveData<TimerStatus> = _timerStatus
 
-    //Init value of selected workout.
     fun start(id: Int) {
-        _workout.removeSource(workoutSource)
-        viewModelScope.launch {
-            workoutSource = repository.getWorkout(id)
-        }
-
-        _workout.addSource(workoutSource) {
-            _workout.value = it
-        }
+        workoutId.value = id
     }
 
-    fun setWorkoutTimeMillis(time: Long) {
+    fun setWorkoutTimeMillis(time: Long){
         _workoutTimeMillis.value = time * MILLIS
-        setStartTimeRemaining()
+        setRemainingTimeAtStart()
     }
 
-    private fun setStartTimeRemaining() {
+    private fun setRemainingTimeAtStart() {
         if (_timerStatus.value == TimerStatus.OFF)
-            _timeRemainingMilis.value = workoutTimeMillis.value
+            _timeRemainingMillis.value = workoutTimeMillis.value
     }
 
     /**
@@ -73,13 +65,13 @@ class DetailViewModel @ViewModelInject constructor(private val repository: Worko
     fun startTimer() {
         val startTimeMillis =
             if (_timerStatus.value == TimerStatus.PAUSED)
-                _pausedWorkoutTimeMilis.value!!
+                _pausedWorkoutTimeMillis.value!!
             else
                 workoutTimeMillis.value!!
 
         timer = object : CountDownTimer(startTimeMillis, MILLIS) {
             override fun onTick(millisUntilFinished: Long) {
-                _timeRemainingMilis.postValue(millisUntilFinished)
+                _timeRemainingMillis.postValue(millisUntilFinished)
             }
 
             override fun onFinish() {
@@ -95,16 +87,19 @@ class DetailViewModel @ViewModelInject constructor(private val repository: Worko
     fun resetTimer() {
         timer.cancel()
         _timerStatus.value = TimerStatus.OFF
-        setStartTimeRemaining()
+
+        //Reset remaining time so it matches the workout time.
+        setRemainingTimeAtStart()
     }
 
     /**
-     * Executed when the pause button is clicked.
+     * Executed when the pause button is clicked. Once the pause
+     * time matching current onTick() is saved, the timer can be reset.
      */
     fun pauseTimer() {
-        _pausedWorkoutTimeMilis.value = _timeRemainingMilis.value
+        _pausedWorkoutTimeMillis.value = _timeRemainingMillis.value
         timer.cancel()
-        _timeRemainingMilis.value = _pausedWorkoutTimeMilis.value
+        _timeRemainingMillis.value = _pausedWorkoutTimeMillis.value
         _timerStatus.value = TimerStatus.PAUSED
     }
 
@@ -115,6 +110,7 @@ class DetailViewModel @ViewModelInject constructor(private val repository: Worko
         val currentSaveStatus = workout.isSaved
         workout.isSaved = !currentSaveStatus
         workout.timeSaved = System.currentTimeMillis()
+
         viewModelScope.launch {
             repository.update(workout)
         }
