@@ -25,5 +25,6 @@ class WorkoutRepository @Inject constructor(
         }
     }
 
-    fun getCategories(): Flow<List<WorkoutCategory>> = categoryDao.getCategories()
+    fun getCategories(): Flow<List<WorkoutCategory>> =
+        categoryDao.getCategories().flowOn(Dispatchers.Default)
 }
