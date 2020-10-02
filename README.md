@@ -34,7 +34,8 @@ Gymific is a home workout app illustrating Android development best practices: H
   - Repository pattern
   
 ## Testing 
-  - Under development.
+###  Device Tests:
+  - <b>Database Testing</b> - The project creates an in memory database for each database test but still runs them on the device.
 
 ## Design
 + Gymific is built with Material Components for Android.
