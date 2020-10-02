@@ -51,6 +51,6 @@ Gymific uses graphic resources from [freepik](https://www.freepik.com).
 
 ## Preview
 <img src="/previews/preview_3.gif" align="left" width="33%"/>
-
+<br>
 <img src="/previews/screen_1.png" width="33%"/> <img src="/previews/screen_2.png" width="33%"/> <img src="/previews/screen_3.png" width="33%"/>
 
