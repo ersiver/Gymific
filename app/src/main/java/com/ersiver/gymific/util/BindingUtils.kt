@@ -6,9 +6,10 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ersiver.gymific.model.Workout
+import com.ersiver.gymific.model.WorkoutCategory
 import com.ersiver.gymific.ui.common.WorkoutAdapter
 import com.ersiver.gymific.ui.detail.TimerStatus
-
+import com.ersiver.gymific.ui.home.WorkoutCategoryAdapter
 
 /**
  * Binding adapter used to to display workout time in the descriptions.
@@ -37,6 +38,16 @@ fun RecyclerView.bindRecyclerView(list: List<Workout>?) {
     val adapter = adapter as WorkoutAdapter
     adapter.submitList(list)
 }
+
+/**
+ * Binding adapter used to submit list of categories to the [WorkoutCategoryAdapter].
+ */
+@BindingAdapter("categoryListData")
+fun RecyclerView.bindList(list: List<WorkoutCategory>?) {
+   val adapter = adapter as WorkoutCategoryAdapter
+    adapter.submitList(list)
+}
+
 
 /**
  * Binding adapter used to manage behaviour of

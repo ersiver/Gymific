@@ -7,6 +7,7 @@ import com.ersiver.gymific.model.Workout
 import com.ersiver.gymific.repository.WorkoutRepository
 import com.ersiver.gymific.util.MILLIS
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 enum class TimerStatus {
     ON, OFF, PAUSED
@@ -14,14 +15,16 @@ enum class TimerStatus {
 
 class DetailViewModel @ViewModelInject constructor(private val repository: WorkoutRepository) :
     ViewModel() {
+    init {
+        Timber.i("DetailViewModel init")
+    }
     private lateinit var timer: CountDownTimer
-
     private val workoutId = MutableLiveData<Int>()
 
     private var _workout = workoutId.switchMap { repository.getWorkout(it) }
     val workout: LiveData<Workout> = _workout
 
-    val _workoutTimeMillis = MutableLiveData<Long>()
+    private val _workoutTimeMillis = MutableLiveData<Long>()
     val workoutTimeMillis: LiveData<Long> = _workoutTimeMillis
 
     //Data displayed in the center of the circular ProgressBar.
@@ -47,7 +50,7 @@ class DetailViewModel @ViewModelInject constructor(private val repository: Worko
     }
 
     private fun setRemainingTimeAtStart() {
-        if (_timerStatus.value == TimerStatus.OFF)
+        //if (_timerStatus.value == TimerStatus.OFF)
             _timeRemainingMillis.value = workoutTimeMillis.value
     }
 

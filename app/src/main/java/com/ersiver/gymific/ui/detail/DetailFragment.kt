@@ -44,13 +44,13 @@ class DetailFragment : Fragment() {
         onOptionsItemSelected()
         detailViewModel.start(workout.id)
 
-        detailViewModel.workout.observe(viewLifecycleOwner) {workout ->
+        detailViewModel.workout.observe(viewLifecycleOwner) { workout ->
             updateMenuItemIcon(workout.isSaved)
             detailViewModel.setWorkoutTimeMillis(workout.time)
         }
 
         detailViewModel.workoutTimeMillis.observe(viewLifecycleOwner) {
-           binding.workoutProgress.setWorkoutTime(it)
+            binding.workoutProgress.setWorkoutTime(it)
         }
 
         detailViewModel.timeRemainingMillis.observe(viewLifecycleOwner) {

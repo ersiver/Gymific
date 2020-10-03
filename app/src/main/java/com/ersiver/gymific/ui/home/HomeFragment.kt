@@ -13,11 +13,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private val homeViewModel: HomeViewModel by viewModels()
-    private val binding: FragmentHomeBinding by lazy {
-        FragmentHomeBinding.inflate(layoutInflater)
-    }
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var workoutAdapter: WorkoutAdapter
-
     private lateinit var categoryAdapter: WorkoutCategoryAdapter
 
     override fun onCreateView(
@@ -25,13 +22,13 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.apply {
             viewModel = homeViewModel
+            lifecycleOwner = viewLifecycleOwner
         }
         setupWorkoutRecyclerView()
         setupCategoryRecyclerView()
-        subscribeRecommendedUi()
-        subscribeCategoryUi()
         return binding.root
     }
 
@@ -43,17 +40,5 @@ class HomeFragment : Fragment() {
     private fun setupWorkoutRecyclerView() {
         workoutAdapter = WorkoutAdapter(false)
         binding.recommendedList.adapter = workoutAdapter
-    }
-
-    private fun subscribeCategoryUi() {
-        homeViewModel.categoriesUiModel.observe(viewLifecycleOwner) {
-            categoryAdapter.submitList(it.categories)
-        }
-    }
-
-    private fun subscribeRecommendedUi() {
-        homeViewModel.recommendedUiModel.observe(viewLifecycleOwner) {
-            workoutAdapter.submitList(it.workouts)
-        }
     }
 }

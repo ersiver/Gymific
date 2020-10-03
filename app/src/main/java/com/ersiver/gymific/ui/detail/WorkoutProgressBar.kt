@@ -14,6 +14,8 @@ import java.util.concurrent.TimeUnit
 /**
  * Custom ProgressBar that displays workout time in the center of a circular progress bar.
  */
+
+private const val GESTURE_THRESHOLD_DP = 76F
 class WorkoutProgressBar(context: Context, attrs: AttributeSet) :
     ProgressBar(context, attrs, R.attr.progressBarStyle, R.style.Gymific_ProgressBar) {
     private val textPaint: TextPaint
@@ -26,7 +28,6 @@ class WorkoutProgressBar(context: Context, attrs: AttributeSet) :
 
     init {
         val res = resources
-        val GESTURE_THRESHOLD_DP = 76f
         textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
         textPaint.density = res.displayMetrics.density
         textPaint.textSize = GESTURE_THRESHOLD_DP.toInt() * res.displayMetrics.scaledDensity
@@ -53,10 +54,10 @@ class WorkoutProgressBar(context: Context, attrs: AttributeSet) :
         val totalSeconds = TimeUnit.MILLISECONDS.toSeconds(timeRemainingMilis)
         val seconds = totalSeconds % 60
         timeText = String.format(Locale.ROOT, "%1d:%02d", minutes, seconds)
-        invalidate()
-
         val progress = maxProgress - totalSeconds * maxProgress / workoutTime
-        setProgress(progress.toInt(), true)
+
+        setProgress(progress.toInt())
+        invalidate()
     }
 
     @Synchronized
@@ -65,11 +66,11 @@ class WorkoutProgressBar(context: Context, attrs: AttributeSet) :
         canvas.drawText(timeText, posX.toFloat(), posY.toFloat(), textPaint)
     }
 
-
     @Synchronized
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         posX = measuredWidth / 2
         posY = measuredHeight / 2 - fontHeight / 2
     }
+
 }
