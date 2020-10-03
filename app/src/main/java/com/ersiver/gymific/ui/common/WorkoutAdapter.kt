@@ -40,7 +40,7 @@ class WorkoutAdapter(private val isListView: Boolean) :
         val DIFF_CALLBACK: DiffUtil.ItemCallback<Workout> =
             object : DiffUtil.ItemCallback<Workout>() {
                 override fun areItemsTheSame(oldItem: Workout, newItem: Workout) =
-                    oldItem == newItem
+                    oldItem.id == newItem.id
 
                 override fun areContentsTheSame(oldItem: Workout, newItem: Workout) =
                     oldItem.id == newItem.id

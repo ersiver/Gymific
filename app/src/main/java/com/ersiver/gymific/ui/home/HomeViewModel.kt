@@ -14,7 +14,6 @@ import timber.log.Timber
 class HomeViewModel @ViewModelInject constructor(
     repository: WorkoutRepository
 ) : ViewModel() {
-
     init {
         Timber.i("HomeViewModel init")
     }

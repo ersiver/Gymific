@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.ersiver.gymific.ui.home.HomeViewModel" />
@@ -19,7 +20,7 @@
             android:id="@+id/app_bar_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/subtitle_recommended"
+            app:layout_constraintBottom_toTopOf="@id/scrollable_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -32,61 +33,75 @@
                 app:title="@string/app_name" />
         </com.google.android.material.appbar.AppBarLayout>
 
-
-        <TextView
-            android:id="@+id/subtitle_recommended"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dim_1"
-            android:layout_marginTop="@dimen/dim_1"
-            android:padding="@dimen/dim_1"
-            android:text="@string/recommended"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/app_bar_home" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recommended_list"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dim_1"
-            android:layout_marginEnd="@dimen/dim_1"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/subtitle_recommended"
-            tools:listitem="@layout/workout_grid_item" />
-
-
-        <TextView
-            android:id="@+id/subtitle_categories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dim_1"
-            android:layout_marginTop="@dimen/dim_1"
-            android:padding="@dimen/dim_1"
-            android:text="@string/categories"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            app:layout_constraintBottom_toTopOf="@id/category_list"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recommended_list" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/category_list"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollable_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/dim_1"
-            android:layout_marginEnd="@dimen/dim_1"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/subtitle_categories"
-            tools:listitem="@layout/category_view_item" />
+            app:layout_constraintTop_toBottomOf="@id/app_bar_home">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/subtitle_recommended"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dim_1"
+                    android:layout_marginTop="@dimen/dim_1"
+                    android:padding="@dimen/dim_1"
+                    android:text="@string/recommended"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recommended_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dim_1"
+                    android:layout_marginEnd="@dimen/dim_1"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subtitle_recommended"
+                    tools:listitem="@layout/workout_grid_item" />
+
+
+                <TextView
+                    android:id="@+id/subtitle_categories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dim_1"
+                    android:layout_marginTop="@dimen/dim_1"
+                    android:padding="@dimen/dim_1"
+                    android:text="@string/categories"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:layout_constraintBottom_toTopOf="@id/category_list"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recommended_list" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/category_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dim_1"
+                    android:layout_marginEnd="@dimen/dim_1"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subtitle_categories"
+                    tools:listitem="@layout/category_view_item" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

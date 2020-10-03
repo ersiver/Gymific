@@ -44,6 +44,7 @@ class HomeFragment : Fragment() {
         workoutAdapter = WorkoutAdapter(false)
         binding.recommendedList.adapter = workoutAdapter
     }
+
     private fun subscribeCategoryUi() {
         homeViewModel.categoriesUiModel.observe(viewLifecycleOwner) {
             categoryAdapter.submitList(it.categories)
