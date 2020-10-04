@@ -25,6 +25,7 @@ class DetailFragment : Fragment() {
         args.workout
     }
     private lateinit var toolbar: Toolbar
+    private var pausedTime: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,15 +47,22 @@ class DetailFragment : Fragment() {
 
         detailViewModel.workout.observe(viewLifecycleOwner) { workout ->
             updateMenuItemIcon(workout.isSaved)
-            detailViewModel.setWorkoutTimeMillis(workout.time)
         }
 
-        detailViewModel.workoutTimeMillis.observe(viewLifecycleOwner) {
-            binding.workoutProgress.setWorkoutTime(it)
+        detailViewModel.workoutTimeMillis.observe(viewLifecycleOwner) { workoutTimeMillis ->
+            binding.workoutProgress.setDuration(workoutTimeMillis)
         }
 
-        detailViewModel.timeRemainingMillis.observe(viewLifecycleOwner) {
+        detailViewModel.savedPausedTime.observe(viewLifecycleOwner) { savedPausedTime ->
+            detailViewModel.manageTimer(savedPausedTime)
+        }
+
+        detailViewModel.runningTime.observe(viewLifecycleOwner) {
             binding.workoutProgress.updateProgressBar(it)
+        }
+
+        detailViewModel.pausedWorkoutTimeMillis.observe(viewLifecycleOwner) {
+            pausedTime = it
         }
     }
 
@@ -77,5 +85,10 @@ class DetailFragment : Fragment() {
             detailViewModel.setFavourite(workout)
             true
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        detailViewModel.savePausedTime(workout.id, pausedTime)
     }
 }

@@ -17,34 +17,56 @@ enum class SortOrder {
     BY_CATEGORY
 }
 
+
 data class UserPreferences(val sortOrder: SortOrder)
+
+private const val SORT_KEY = "sort_order"
 
 class UserPreferenceRepository @Inject constructor(@ActivityContext context: Context) {
     private val dataStore: DataStore<Preferences> = context.createDataStore(name = PREFERENCE_NAME)
 
-    private object PreferenceKeys {
-        val SORT_ORDER = preferencesKey<String>("sort_order")
+    /**
+     * Save a new sort order to DataStore. prefKey is always constant.
+     */
+    suspend fun setSortOrder(order: String) {
+        dataStore.edit { preferences ->
+            val newSortOrder = SortOrder.valueOf(order)
+            preferences[preferencesKey<String>(SORT_KEY)] = newSortOrder.name
+        }
     }
 
-    //Return sort preferences.
+    /**
+     * Return sort preferences.
+     */
     val userPreferencesFlow: Flow<UserPreferences> = dataStore.data
         .catch {
             emit(emptyPreferences())
         }
         .map { preferences ->
             //Set default order to BY_DATE
-            val sortAsString = preferences[PreferenceKeys.SORT_ORDER] ?: SortOrder.BY_DATE.name
+            val sortAsString =
+                preferences[preferencesKey<String>(SORT_KEY)] ?: SortOrder.BY_DATE.name
             val sortOrder = SortOrder.valueOf(sortAsString)
             UserPreferences(sortOrder)
         }
 
     /**
-     * Save a new sort order to DataStore.
+     * Save a pausedTime to DataStore.
      */
-    suspend fun setSortOrder(order: String) {
+    suspend fun savePausedTime(prefKey: Int, timeMillis: Long) {
         dataStore.edit { preferences ->
-            val newSortOrder = SortOrder.valueOf(order)
-            preferences[PreferenceKeys.SORT_ORDER] = newSortOrder.name
+            preferences[preferencesKey<Long>(prefKey.toString())] = timeMillis
         }
     }
+
+    /**
+     * Returns workout paused time. The prefKey matches the workout's id.
+     */
+    fun getPausedTime(prefKey: Int): Flow<Long> = dataStore.data
+        .catch {
+            emit(emptyPreferences())
+        }
+        .map { preferences ->
+            preferences[preferencesKey(prefKey.toString())] ?: 0
+        }
 }

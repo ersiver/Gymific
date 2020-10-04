@@ -18,7 +18,6 @@ class FavouriteViewModel @ViewModelInject constructor(
     private val userPreferenceRepository: UserPreferenceRepository
 ) :
     ViewModel() {
-
     init {
         Timber.i("FavouriteViewModel Init")
     }

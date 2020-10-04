@@ -8,18 +8,19 @@ Gymific is a home workout app illustrating Android development best practices: H
   + The Home and Workout screens start with lists of pre-populated data. Loading raw data into Room database is scheduled with WorkManager's ```OneTimeWorkRequest```.
   + The Workout screen consists of ```ViewPager2``` with Tabs that organize workouts across 3 different screens basing on workout's categories.
   + The Favourite screen displays list of user's selections. The list of favourite has an option to sort data. UserPreferenceRepository class holds the sort order, defined as an enum. The current sort order is saved in ```Jetpack DataStore```.
-  + The Detail screen demonstrates ustom ProgressBar that displays running time in the center of the "moving" ring.
-  + WorkoutRepository is responsible for providing the workouts and exposes it via ```Flow``` and ```LiveData```.
+  + The Detail screen demonstrates custom ProgressBar that displays running time in the center of the "moving" ring. The timer has an option to pause the time, which is then stored in ```Jetpack DataStore```.
+  + WorkoutRepository is responsible for providing the workouts and exposes them via ```Flow```, which are converted to ```LiveData``` in the ViewModels and the UiModel objects wrap the objects that needs to be displayed in the UI.
   + Data Binding Library is used to display recurrent lists and workout details, handle clickListeners and manage buttons behaviours. Where data binding was not an intuitive option, the UI components were bind programmatically.
 
 ## Tech stack & Open-source libraries
 ### Android Architecture Components & good practices: </b>
   - DataBinding - the app binds the UI components in the XML layout to data sources using a DataBinding and custom BindingAdapters.
   - Room Persistent Library - to access app's SQLite database.
-  - DataStore - used to persist sort order.
+  - DataStore - used to persist sort order and paused the workout time.
   - ViewModel - hold all the elements necessary to build the data that needs to be displayed in the UI.
-  - Lifecycles - Create a UI that automatically responds to lifecycle events.
-  - LiveData - Build data objects that notify views when the underlying database changes.
+  - Lifecycles - create a UI that automatically responds to lifecycle events.
+  - WorkManager - to pre-populate Room database with raw data.
+  - LiveData - build data objects that notify views when the underlying database changes.
   - Navigation for navigation between different screens. 
   - SafeArgs for passing data between fragments.
   - Dagger-Hilt for dependency injection.

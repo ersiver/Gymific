@@ -12,15 +12,17 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 /**
- * Custom ProgressBar that displays workout time in the center of a circular progress bar.
+ * Custom ProgressBar that displays workout
+ * time in the center of a circular progress bar.
  */
 
 private const val GESTURE_THRESHOLD_DP = 76F
+
 class WorkoutProgressBar(context: Context, attrs: AttributeSet) :
     ProgressBar(context, attrs, R.attr.progressBarStyle, R.style.Gymific_ProgressBar) {
     private val textPaint: TextPaint
     private var timeText = "-:--"
-    private var workoutTime = 0L
+    private var duration = 0L
     private val maxProgress = 100
     private val fontHeight: Int
     private var posX = 0
@@ -39,14 +41,15 @@ class WorkoutProgressBar(context: Context, attrs: AttributeSet) :
         fontHeight = (fontMetrics.descent + fontMetrics.ascent).toInt()
     }
 
-    fun setWorkoutTime(time: Long) {
-        workoutTime = TimeUnit.MILLISECONDS.toSeconds(time)
+    fun setDuration(time: Long) {
+        duration = TimeUnit.MILLISECONDS.toSeconds(time)
     }
 
     /**
      * Calculate remaining workout time into min:sec format,
      * and draw it in the center of the circular progress bar.
-     * Calculate progress and draw the 'moving' ring.
+     *
+     * Calculate progress and update the 'moving' ring.
      */
     @Synchronized
     fun updateProgressBar(timeRemainingMilis: Long) {
@@ -54,8 +57,7 @@ class WorkoutProgressBar(context: Context, attrs: AttributeSet) :
         val totalSeconds = TimeUnit.MILLISECONDS.toSeconds(timeRemainingMilis)
         val seconds = totalSeconds % 60
         timeText = String.format(Locale.ROOT, "%1d:%02d", minutes, seconds)
-        val progress = maxProgress - totalSeconds * maxProgress / workoutTime
-
+        val progress = maxProgress - totalSeconds * maxProgress / duration
         setProgress(progress.toInt())
         invalidate()
     }
@@ -72,5 +74,4 @@ class WorkoutProgressBar(context: Context, attrs: AttributeSet) :
         posX = measuredWidth / 2
         posY = measuredHeight / 2 - fontHeight / 2
     }
-
 }

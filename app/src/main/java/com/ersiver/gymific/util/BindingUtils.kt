@@ -54,7 +54,7 @@ fun RecyclerView.bindList(list: List<WorkoutCategory>?) {
  * the playButton in the DetailFragment.
  */
 @BindingAdapter("playButtonEnable")
-fun ImageButton.playButtonBehaviour(status: TimerStatus) {
+fun ImageButton.playButtonBehaviour(status: TimerStatus?) {
     when (status) {
         TimerStatus.OFF -> enabledAndOpaque()
         TimerStatus.ON -> disabledAndFade()
@@ -67,7 +67,7 @@ fun ImageButton.playButtonBehaviour(status: TimerStatus) {
  * the stopButton in the DetailFragment.
  */
 @BindingAdapter("stopButtonEnable")
-fun ImageButton.stopButtonBehaviour(status: TimerStatus) {
+fun ImageButton.stopButtonBehaviour(status: TimerStatus?) {
     when (status) {
         TimerStatus.OFF -> disabledAndFade()
         TimerStatus.ON -> enabledAndOpaque()
@@ -80,7 +80,7 @@ fun ImageButton.stopButtonBehaviour(status: TimerStatus) {
  * the pauseButton in the DetailFragment.
  */
 @BindingAdapter("pauseButtonEnable")
-fun ImageButton.pauseButtonBehaviour(status: TimerStatus) {
+fun ImageButton.pauseButtonBehaviour(status: TimerStatus?) {
     when (status) {
         TimerStatus.OFF -> disabledAndFade()
         TimerStatus.ON -> enabledAndOpaque()
