@@ -116,7 +116,7 @@ dependencies {
     implementation "androidx.work:work-runtime-ktx:$work_version"
 
     //Gson
-    def gsonVersion = "2.8.5"
+    def gsonVersion = "2.8.6"
     implementation "com.google.code.gson:gson:$gsonVersion"
 
     //Device tests
