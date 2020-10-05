@@ -85,7 +85,7 @@ class DetailViewModel @ViewModelInject constructor(
     fun manageTimer(savedPausedTime: Long) {
         if (timerStatus.value != TimerStatus.ON) {
             if (savedPausedTime == 0L)
-                setTimerFromBeginning()
+                setTimerStartMode()
             else
                 setTimerResumeMode(savedPausedTime)
         }
@@ -94,7 +94,7 @@ class DetailViewModel @ViewModelInject constructor(
     /**
      * Set the timer ready to countdown the full workout time.
      */
-    private fun setTimerFromBeginning() {
+    private fun setTimerStartMode() {
         _pausedWorkoutTimeMillis.value = 0
         _timerStatus.value = TimerStatus.OFF
         _runningTimeMillis.value = workoutTimeMillis.value
@@ -139,7 +139,7 @@ class DetailViewModel @ViewModelInject constructor(
      */
     fun resetTimer() {
         timer.cancel()
-        setTimerFromBeginning()
+        setTimerStartMode()
     }
 
     /**
@@ -164,6 +164,9 @@ class DetailViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Save the paused time.
+     */
     fun savePausedTime(id: Int, pauseTime: Long) {
         viewModelScope.launch {
             userPreferenceRepository.savePausedTime(

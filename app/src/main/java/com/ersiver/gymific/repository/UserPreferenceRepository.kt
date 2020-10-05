@@ -17,7 +17,6 @@ enum class SortOrder {
     BY_CATEGORY
 }
 
-
 data class UserPreferences(val sortOrder: SortOrder)
 
 private const val SORT_KEY = "sort_order"
@@ -60,7 +59,7 @@ class UserPreferenceRepository @Inject constructor(@ActivityContext context: Con
     }
 
     /**
-     * Returns workout paused time. The prefKey matches the workout's id.
+     * Return workout paused time. The prefKey matches the workout's id.
      */
     fun getPausedTime(prefKey: Int): Flow<Long> = dataStore.data
         .catch {
