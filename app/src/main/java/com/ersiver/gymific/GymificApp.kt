@@ -2,7 +2,9 @@ package com.ersiver.gymific
 
 import android.app.Application
 import androidx.hilt.work.HiltWorkerFactory
-import androidx.work.*
+import androidx.work.Configuration
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.ersiver.gymific.worker.PopulateCategoryTableWorker
 import com.ersiver.gymific.worker.PopulateWorkoutTableWorker
 import dagger.hilt.android.HiltAndroidApp
@@ -33,7 +35,6 @@ class GymificApp : Application(), Configuration.Provider {
 
     //Pre-populate database with raw data.
     private fun prepopulateDatabase() {
-        Timber.i("prepopulateDatabase called")
         val populateWorkoutTable = OneTimeWorkRequestBuilder<PopulateWorkoutTableWorker>().build()
         val populateCategoryTable = OneTimeWorkRequestBuilder<PopulateCategoryTableWorker>().build()
 

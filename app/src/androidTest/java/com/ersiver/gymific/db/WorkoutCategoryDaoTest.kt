@@ -5,6 +5,7 @@ import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.ersiver.gymific.util.TestUtil
+import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -19,6 +20,7 @@ import org.junit.runner.RunWith
 
 @ExperimentalCoroutinesApi
 @SmallTest
+@HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 class WorkoutCategoryDaoTest : LocalDatabase() {
     @get:Rule

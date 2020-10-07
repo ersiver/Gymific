@@ -37,6 +37,7 @@ Gymific is a home workout app illustrating Android development best practices: H
 ## Testing 
 ###  Device Tests:
   - <b>Database Testing</b> - The project creates an in memory database for each database test but still runs them on the device.
+  - <b>WorkManager Testing</b> - The app tests CoroutineWorkers with ```TestListenableWorkerBuilder```. WorkerFactory is injected with use of ```HiltAndroidRule```.
 
 ## Design
 + Gymific is built with Material Components for Android.
