@@ -26,6 +26,7 @@ class HomeViewModel @ViewModelInject constructor(
             RecommendedUiModel(recommended)
         }
 
+
     val recommendedUiModel: LiveData<RecommendedUiModel> = recommendedUiFlow.asLiveData()
 
     private val categoriesFlow: Flow<CategoryUiModel> =

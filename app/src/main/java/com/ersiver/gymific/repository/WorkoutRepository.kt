@@ -5,6 +5,7 @@ import com.ersiver.gymific.db.WorkoutCategoryDao
 import com.ersiver.gymific.db.WorkoutDao
 import com.ersiver.gymific.model.Workout
 import com.ersiver.gymific.model.WorkoutCategory
+import com.ersiver.gymific.util.EspressoIdlingResource.wrapEspressoIdlingResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -15,16 +16,26 @@ class WorkoutRepository @Inject constructor(
     private val workoutDao: WorkoutDao,
     private val categoryDao: WorkoutCategoryDao
 ) {
-    fun getWorkouts(): Flow<List<Workout>> = workoutDao.getWorkouts().flowOn(Dispatchers.Default)
+    fun getWorkouts(): Flow<List<Workout>> =
+        wrapEspressoIdlingResource {
+            workoutDao.getWorkouts().flowOn(Dispatchers.Default)
+        }
 
-    fun getWorkout(id: Int): LiveData<Workout> = workoutDao.getWorkout(id)
+    fun getWorkout(id: Int): LiveData<Workout> =
+        wrapEspressoIdlingResource {
+            workoutDao.getWorkout(id)
+        }
 
     suspend fun update(workout: Workout) {
-        withContext(Dispatchers.IO) {
-            workoutDao.update(workout)
+        wrapEspressoIdlingResource {
+            withContext(Dispatchers.IO) {
+                workoutDao.update(workout)
+            }
         }
     }
 
     fun getCategories(): Flow<List<WorkoutCategory>> =
-        categoryDao.getCategories().flowOn(Dispatchers.Default)
+        wrapEspressoIdlingResource {
+            categoryDao.getCategories().flowOn(Dispatchers.Default)
+        }
 }

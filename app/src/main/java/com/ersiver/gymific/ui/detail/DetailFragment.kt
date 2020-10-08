@@ -68,6 +68,7 @@ class DetailFragment : Fragment() {
 
     private fun setupToolbarWithNavigation() {
         toolbar = binding.toolbarDetail
+        toolbar.navigationContentDescription = resources.getString(R.string.navigate_up)
         toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }

@@ -36,7 +36,8 @@ Gymific is a home workout app illustrating Android development best practices: H
   
 ## Testing 
 ###  Device Tests:
-  - <b>Database Testing</b> - The project creates an in memory database for each database test but still runs them on the device.
+  - <b>App Navigation Test</b> Navigation between screens is tested using Espresso UI framework and ```ActivityScenario``` for lifecycle state. Hilt provides test version of Repository and automatically generates a new set of components for each test. This is done with use of a ```CustomTestRunner``` that uses an Application configured with ```Hilt```. In order to make Espresso aware of data binding ```DataBindingIdlingResource``` is registered for UI test.
+  - <b>Database Testing</b> - Database is tested with small instrumented unit tests. The project creates an in memory database for each database test but still runs them on the device.
   - <b>WorkManager Testing</b> - The app tests CoroutineWorkers with ```TestListenableWorkerBuilder```. WorkerFactory is injected with use of ```HiltAndroidRule```.
 
 ## Design

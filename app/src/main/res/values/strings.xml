@@ -10,6 +10,7 @@
     <string name="content_description_stop">Stop button</string>
     <string name="content_description_pause">Pause button</string>
 
+    <string name="navigate_up">Navigate up</string>
 
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>

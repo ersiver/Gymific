@@ -72,6 +72,7 @@
         </LinearLayout>
 
         <ImageButton
+            android:id="@+id/nav_detail_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{clickListener}"
@@ -80,7 +81,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description_layout"
             android:background="?android:selectableItemBackground"
-            android:contentDescription="@string/content_description_stop"
+            android:contentDescription="@string/content_description_play"
             android:padding="@dimen/dim_1"
             android:src="@drawable/ic_play"/>
 
