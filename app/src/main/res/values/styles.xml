@@ -29,4 +29,16 @@
         <item name="android:maxWidth">250dp</item>
         <item name="android:indeterminateOnly">false</item>
     </style>
+
+
+    <!-- CheckBox -->
+    <style name="Widget.Gymific.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.CheckBox</item>
+    </style>
+    <style name="ThemeOverlay.App.CheckBox" parent="">
+        <item name="colorOnSurface">@color/colorPrimaryAlpha</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+
 </resources>

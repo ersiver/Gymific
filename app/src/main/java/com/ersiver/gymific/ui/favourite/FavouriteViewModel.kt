@@ -8,6 +8,7 @@ import com.ersiver.gymific.repository.UserPreferenceRepository
 import com.ersiver.gymific.repository.UserPreferences
 import com.ersiver.gymific.repository.WorkoutRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -25,6 +26,9 @@ class FavouriteViewModel @ViewModelInject constructor(
     private val sortPreferenceFlow: Flow<UserPreferences> =
         userPreferenceRepository.userPreferencesFlow
 
+    private val _sortOrder = MutableLiveData<String>()
+    val sortOrder: LiveData<String> = _sortOrder
+
     private val favouriteListFlow: Flow<List<Workout>> = repository.getWorkouts().map {
         val favourites = it.filter { workout ->
             workout.isSaved
@@ -37,9 +41,11 @@ class FavouriteViewModel @ViewModelInject constructor(
             favouriteListFlow,
             sortPreferenceFlow
         ) { workouts: List<Workout>, userPreferences: UserPreferences ->
+            _sortOrder.value = userPreferences.sortOrder.name
+
             return@combine FavouriteUiModel(
                 workouts = sortedWorkouts(workouts, userPreferences.sortOrder),
-                userPreferences.sortOrder
+                sortOrder = userPreferences.sortOrder
             )
         }
 

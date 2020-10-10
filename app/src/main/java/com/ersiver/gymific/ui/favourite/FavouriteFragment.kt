@@ -1,9 +1,11 @@
 package com.ersiver.gymific.ui.favourite
 
+import android.graphics.Typeface
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -15,12 +17,16 @@ import com.ersiver.gymific.util.BY_DATE
 import com.ersiver.gymific.util.BY_TIME
 import com.ersiver.gymific.util.BY_TITLE
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class FavouriteFragment : Fragment() {
     private val favouriteViewModel: FavouriteViewModel by viewModels()
     private lateinit var binding: FragmentFavouriteBinding
     private lateinit var adapter: WorkoutAdapter
+    private lateinit var toolbar: Toolbar
+    private lateinit var selectedItem: MenuItem
+    private val checkedItems: MutableList<MenuItem> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,20 +38,27 @@ class FavouriteFragment : Fragment() {
             viewModel = favouriteViewModel
             lifecycleOwner = viewLifecycleOwner
         }
+
         onOptionsItemSelected()
         setupRecyclerView()
+
+        favouriteViewModel.sortOrder.observe(viewLifecycleOwner) { sortOrderName ->
+            checkSelectedMenu(sortOrderName)
+        }
+
         return binding.root
     }
 
     private fun onOptionsItemSelected() {
-        binding.toolbarFavourite.setOnMenuItemClickListener { item ->
+        toolbar = binding.toolbarFavourite
+
+        toolbar.setOnMenuItemClickListener { item ->
             val order = when (item.itemId) {
                 R.id.sort_by_date -> BY_DATE
                 R.id.sort_by_name -> BY_TITLE
                 R.id.sort_by_category -> BY_CATEGORY
                 else -> BY_TIME
             }
-
             favouriteViewModel.updateSortOrder(order)
             true
         }
@@ -58,5 +71,22 @@ class FavouriteFragment : Fragment() {
             val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
             favouriteList.addItemDecoration(decoration)
         }
+    }
+
+    private fun checkSelectedMenu(sortOrderName: String) {
+        val menu = toolbar.menu
+        selectedItem = when (sortOrderName) {
+            BY_DATE -> menu.getItem(0)
+            BY_TITLE -> menu.getItem(1)
+            BY_CATEGORY -> menu.getItem(2)
+            else -> menu.getItem(3)
+        }
+
+        for (item in checkedItems)
+            item.isChecked = false
+
+        checkedItems.clear()
+        checkedItems.add(selectedItem)
+        selectedItem.isChecked = true
     }
 }

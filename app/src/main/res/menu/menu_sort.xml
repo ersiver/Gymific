@@ -6,23 +6,31 @@
         android:id="@+id/sort_by_date"
         android:contentDescription="@string/title_sort_order"
         android:title="@string/title_sort_date"
+        android:checkable="true"
+        android:checked="false"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/sort_by_name"
         android:contentDescription="@string/title_sort_order"
         android:title="@string/title_sort_name"
+        android:checkable="true"
+        android:checked="false"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/sort_by_category"
         android:contentDescription="@string/title_sort_order"
         android:title="@string/title_sort_category"
+        android:checkable="true"
+        android:checked="false"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/sort_by_time"
         android:contentDescription="@string/title_sort_order"
         android:title="@string/title_sort_training_time"
+        android:checkable="true"
+        android:checked="false"
         app:showAsAction="never" />
 </menu>
