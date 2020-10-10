@@ -40,5 +40,9 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <!-- OptionsMenu Icon -->
+    <style name="Widget.Gymific.ActionButton" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_sort</item>
+    </style>
 
 </resources>

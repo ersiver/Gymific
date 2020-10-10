@@ -24,9 +24,9 @@
     <string name="title_detail">Detail</string>
     <string name="title_set_favourite">Set favourite</string>
     <string name="title_sort_date">Newest first</string>
-    <string name="title_sort_name">Sort by name</string>
-    <string name="title_sort_category">Sort by category</string>
-    <string name="title_sort_training_time">Sort by training time</string>
+    <string name="title_sort_name">Name (A to Z)</string>
+    <string name="title_sort_category">Category (A to Z)</string>
+    <string name="title_sort_training_time">Time (shortest first)</string>
     <string name="recommended">Recommended</string>
     <string name="categories">Categories</string>
 

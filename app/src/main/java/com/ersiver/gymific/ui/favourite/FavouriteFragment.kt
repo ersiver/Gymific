@@ -1,11 +1,8 @@
 package com.ersiver.gymific.ui.favourite
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -17,7 +14,6 @@ import com.ersiver.gymific.util.BY_DATE
 import com.ersiver.gymific.util.BY_TIME
 import com.ersiver.gymific.util.BY_TITLE
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class FavouriteFragment : Fragment() {
@@ -25,7 +21,6 @@ class FavouriteFragment : Fragment() {
     private lateinit var binding: FragmentFavouriteBinding
     private lateinit var adapter: WorkoutAdapter
     private lateinit var toolbar: Toolbar
-    private lateinit var selectedItem: MenuItem
     private val checkedItems: MutableList<MenuItem> = mutableListOf()
 
     override fun onCreateView(
@@ -38,14 +33,12 @@ class FavouriteFragment : Fragment() {
             viewModel = favouriteViewModel
             lifecycleOwner = viewLifecycleOwner
         }
-
         onOptionsItemSelected()
         setupRecyclerView()
 
         favouriteViewModel.sortOrder.observe(viewLifecycleOwner) { sortOrderName ->
-            checkSelectedMenu(sortOrderName)
+            checkSelectedMenuItem(sortOrderName)
         }
-
         return binding.root
     }
 
@@ -73,15 +66,18 @@ class FavouriteFragment : Fragment() {
         }
     }
 
-    private fun checkSelectedMenu(sortOrderName: String) {
+    private fun checkSelectedMenuItem(sortOrderName: String) {
         val menu = toolbar.menu
-        selectedItem = when (sortOrderName) {
+        val selectedItem = when (sortOrderName) {
             BY_DATE -> menu.getItem(0)
             BY_TITLE -> menu.getItem(1)
             BY_CATEGORY -> menu.getItem(2)
             else -> menu.getItem(3)
         }
+        replaceSelectedMenu(selectedItem)
+    }
 
+    private fun replaceSelectedMenu(selectedItem: MenuItem) {
         for (item in checkedItems)
             item.isChecked = false
 
