@@ -41,7 +41,7 @@ Gymific is a home workout app illustrating Android development best practices: H
   - <b>WorkManager Testing</b> - The app tests CoroutineWorkers with ```TestListenableWorkerBuilder```. WorkerFactory is injected with use of ```HiltAndroidRule```.
 
 ###  Local Unit Tests:
-  -<b>ViewModel Tests</b> - ViewModels are tested using local unit tests with Repository mocked by ```Mockito```.
+  - <b>ViewModel Tests</b> - ViewModels are tested using local unit tests with Repository mocked by ```Mockito```.
 
 ## Design
 + Gymific is built with Material Components for Android.
