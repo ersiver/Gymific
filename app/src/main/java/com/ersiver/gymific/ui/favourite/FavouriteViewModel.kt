@@ -8,7 +8,6 @@ import com.ersiver.gymific.repository.UserPreferenceRepository
 import com.ersiver.gymific.repository.UserPreferences
 import com.ersiver.gymific.repository.WorkoutRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch

@@ -36,7 +36,7 @@
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.CheckBox</item>
     </style>
     <style name="ThemeOverlay.App.CheckBox" parent="">
-        <item name="colorOnSurface">@color/colorPrimaryAlpha</item>
+        <item name="colorOnSurface">@color/colorPrimaryLight</item>
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
