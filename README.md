@@ -29,7 +29,6 @@ Gymific is a home workout app illustrating Android development best practices: H
 <img src="/previews/preview_1.gif" align="right" width="33%"/>
 
   + Kotlin Coroutines and Flow for managing background threads with simplified code and reducing needs for callbacks
-  
   + Timber for logs.
   
 ### Architecture:
