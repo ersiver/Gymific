@@ -17,9 +17,8 @@
         <item name="bottomNavigationStyle">@style/Widget.Gymific.BottomNavigationView</item>
         <item name="toolbarStyle">@style/Widget.Gymific.Toolbar</item>
         <item name="materialCardViewStyle">@style/Widget.Gymific.Cardview</item>
-        <item name="checkboxStyle">@style/Widget.Gymific.CheckBox</item>
+        <item name="radioButtonStyle">@style/Widget.Gymific.RadioButton</item>
         <item name="actionOverflowButtonStyle">@style/Widget.Gymific.ActionButton</item>
-
     </style>
 </resources>
 

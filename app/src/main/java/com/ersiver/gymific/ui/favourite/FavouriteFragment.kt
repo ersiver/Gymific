@@ -37,7 +37,7 @@ class FavouriteFragment : Fragment() {
         setupRecyclerView()
 
         favouriteViewModel.sortOrder.observe(viewLifecycleOwner) { sortOrderName ->
-            checkSelectedMenuItem(sortOrderName)
+            setChecked(sortOrderName)
         }
         return binding.root
     }
@@ -66,7 +66,11 @@ class FavouriteFragment : Fragment() {
         }
     }
 
-    private fun checkSelectedMenuItem(sortOrderName: String) {
+    /**
+     * The method is invoked not only when the user selects
+     * item but also on start, to retrieve last chosen option.
+     */
+    private fun setChecked(sortOrderName: String) {
         val menu = toolbar.menu
         val selectedItem = when (sortOrderName) {
             BY_DATE -> menu.getItem(0)
@@ -74,15 +78,6 @@ class FavouriteFragment : Fragment() {
             BY_CATEGORY -> menu.getItem(2)
             else -> menu.getItem(3)
         }
-        replaceSelectedMenu(selectedItem)
-    }
-
-    private fun replaceSelectedMenu(selectedItem: MenuItem) {
-        for (item in checkedItems)
-            item.isChecked = false
-
-        checkedItems.clear()
-        checkedItems.add(selectedItem)
-        selectedItem.isChecked = true
+        selectedItem.isChecked = !selectedItem.isChecked
     }
 }

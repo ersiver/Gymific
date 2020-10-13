@@ -30,12 +30,11 @@
         <item name="android:indeterminateOnly">false</item>
     </style>
 
-
-    <!-- CheckBox -->
-    <style name="Widget.Gymific.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.CheckBox</item>
+    <!-- RadioButtons -->
+    <style name="Widget.Gymific.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.RadioButton</item>
     </style>
-    <style name="ThemeOverlay.App.CheckBox" parent="">
+    <style name="ThemeOverlay.App.RadioButton" parent="">
         <item name="colorOnSurface">@color/colorPrimaryLight</item>
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
@@ -44,5 +43,6 @@
     <style name="Widget.Gymific.ActionButton" parent="Widget.AppCompat.ActionButton.Overflow">
         <item name="android:src">@drawable/ic_sort</item>
     </style>
-
 </resources>
+
+
