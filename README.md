@@ -51,6 +51,7 @@ Gymific is a home workout app illustrating Android development best practices: H
 + The home screen displays horizontally and vertically oriented lists. 
 + The Workout screen has swipe views with tabs (using ViewPager2) and top app bars, that hides on scroll.
 + The detail screen demonstrates custom ProgressBar with gradient ring.
++ The sort menu is built with checkable menu items and the only one item from the group can be checked with use of radio buttons.
 + Adding a workout to the list of favourite takes place by pressing the icon in the menu. The icon will changed appropriately indicating an option to remove the.
 + The buttons, menus and progress indicators are customized for colors and shapes.
 + All clickable components behave intuitively changing their appearance when they are pressed.
