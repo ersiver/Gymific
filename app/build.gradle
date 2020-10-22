@@ -80,7 +80,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
     // Navigation
-    def nav_version = "2.3.0"
+    def nav_version = "2.3.1"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
@@ -103,7 +103,7 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:$hilt_version_vm"
 
     // Preferences DataStore
-    def datastore_version = "1.0.0-alpha01"
+    def datastore_version = "1.0.0-alpha02"
     implementation "androidx.datastore:datastore-preferences:$datastore_version"
 
     // Timber
