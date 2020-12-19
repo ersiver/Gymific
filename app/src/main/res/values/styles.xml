@@ -1,23 +1,23 @@
 <resources>
     <!-- Override theme to use the custom appbar rather than supplied by window decor -->
-    <style name="GymificTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+    <!--   <style name="GymificTheme.NoActionBar">
+           <item name="windowActionBar">false</item>
+           <item name="windowNoTitle">true</item>
+       </style>-->
 
     <!-- BottomNavigation -->
     <style name="Widget.Gymific.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
-        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="backgroundTint">@color/color_primary</item>
     </style>
 
     <!-- Toolbar -->
     <style name="Widget.Gymific.Toolbar" parent="Widget.MaterialComponents.Toolbar">
-        <item name="android:background">@color/colorWhite</item>
+        <item name="android:background">@color/color_status_bar</item>
     </style>
 
     <!-- Cardview -->
     <style name="Widget.Gymific.Cardview" parent="Widget.MaterialComponents.CardView">
-        <item name="android:foregroundTint">@color/colorWhite</item>
+        <item name="android:foregroundTint">@color/color_White</item>
     </style>
 
     <!-- WorkoutTimer -->
@@ -34,14 +34,25 @@
     <style name="Widget.Gymific.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.RadioButton</item>
     </style>
+
     <style name="ThemeOverlay.App.RadioButton" parent="">
-        <item name="colorOnSurface">@color/colorPrimaryLight</item>
-        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorOnSurface">@color/color_secondary</item>
+        <item name="colorAccent">@color/color_secondary_variant</item>
     </style>
 
     <!-- OptionsMenu Icon -->
     <style name="Widget.Gymific.ActionButton" parent="Widget.AppCompat.ActionButton.Overflow">
         <item name="android:src">@drawable/ic_sort</item>
+    </style>
+
+    <style name="Widget.Gymific.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TabLayout</item>
+        <!--        <item name="tabTextAppearance">@style/TextAppearance.App.Button</item>-->
+    </style>
+
+    <style name="ThemeOverlay.App.TabLayout" parent="">
+        <item name="colorSurface">@color/color_status_bar</item>
+        <item name="colorOnSurface">@color/color_on_surface</item>
     </style>
 </resources>
 

@@ -6,7 +6,7 @@
             android:shape="ring"
             android:thicknessRatio="40.0"
             android:useLevel="false">
-            <solid android:color="@color/colorPrimary" />
+            <solid android:color="?attr/colorPrimary" />
         </shape>
     </item>
     <item android:id="@android:id/progress">

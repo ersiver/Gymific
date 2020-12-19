@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dim_0_5"
-        android:background="@color/colorWhite"
+        android:background="?attr/colorSurface"
         android:foreground="?attr/selectableItemBackground">
 
         <com.google.android.material.imageview.ShapeableImageView

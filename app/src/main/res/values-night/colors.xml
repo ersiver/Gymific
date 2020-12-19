@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--Colors picked from https://material.io/resources/color/#!/?view.left=0&view.right=0-->
 
 <resources>
@@ -13,14 +12,14 @@
     <color name="color_on_secondary">#FFFFFF</color>
     <color name="color_error">#F44336</color>
     <color name="color_on_error">#FFFFFF</color>
-    <color name="color_surface">#FFFFFF</color>
-    <color name="color_on_surface">#000000</color>
-    <color name="color_background">#f5f5f5</color>
-    <color name="color_on_background">#000000</color>
-    <color name="color_status_bar">#FFFFFF</color>
-    <color name="color_tool_bar">#FFFFFF</color>
+    <color name="color_surface">#484848</color>
+    <color name="color_on_surface">#fafafa</color>
+    <color name="color_background">#212121</color>
+    <color name="color_on_background">#fafafa</color>
+    <color name="color_status_bar">#000a12</color>
+    <color name="color_tool_bar">#000a12</color>
     <color name="primary_text_color">#ffffff</color>
-    <color name="secondary_text_color">#000000</color>
+    <color name="secondary_text_color">#eceff1</color>
     <color name="color_Transparent">@android:color/transparent</color>
     <color name="color_White">#FFFFFF</color>
     <color name="color_Black">#000000</color>

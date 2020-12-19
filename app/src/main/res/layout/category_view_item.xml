@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{category.title}"
                     android:textAppearance="?attr/textAppearanceHeadline5"
-                    android:textColor="@android:color/black"
+                    android:textColor="?colorOnSurface"
                     android:textStyle="bold"
                     tools:text="Cardio" />
 
@@ -54,7 +54,7 @@
                     android:layout_marginTop="@dimen/dim_1"
                     android:text="@{category.overview}"
                     android:textAppearance="?attr/textAppearanceSubtitle1"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="?attr/colorOnSurface"
                     tools:text="Any type of exercise that gets your heart rate up." />
 
                 <TextView

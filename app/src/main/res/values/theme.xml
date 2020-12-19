@@ -2,16 +2,25 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="GymificTheme" parent="Theme.MaterialComponents.DayNight">
-        <!-- App colors -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorSurface">@color/colorWhite</item>
+    <style name="GymificTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Global color attributes -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
+        <item name="colorOnSecondary">@color/color_on_secondary</item>
+        <item name="colorError">@color/color_error</item>
+        <item name="colorOnError">@color/color_on_error</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorOnSurface">@color/color_on_surface</item>
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="colorOnBackground">@color/color_on_background</item>
 
         <!-- Changed navigation ans status bar color -->
-        <item name="android:navigationBarColor">@color/colorBlack</item>
-        <item name="android:statusBarColor">@color/colorWhite</item>
+        <item name="android:navigationBarColor">@color/color_status_bar</item>
+        <item name="android:statusBarColor">@color/color_status_bar</item>
 
         <!-- Components -->
         <item name="bottomNavigationStyle">@style/Widget.Gymific.BottomNavigationView</item>
@@ -19,6 +28,7 @@
         <item name="materialCardViewStyle">@style/Widget.Gymific.Cardview</item>
         <item name="radioButtonStyle">@style/Widget.Gymific.RadioButton</item>
         <item name="actionOverflowButtonStyle">@style/Widget.Gymific.ActionButton</item>
+        <item name="tabStyle">@style/Widget.Gymific.TabLayout</item>
     </style>
 </resources>
 
