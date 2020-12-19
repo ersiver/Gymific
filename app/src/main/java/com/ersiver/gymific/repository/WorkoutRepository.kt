@@ -18,7 +18,7 @@ class WorkoutRepository @Inject constructor(
 ) {
     fun getWorkouts(): Flow<List<Workout>> =
         wrapEspressoIdlingResource {
-            workoutDao.getWorkouts().flowOn(Dispatchers.Default)
+            workoutDao.getWorkouts().flowOn(Dispatchers.IO)
         }
 
     fun getWorkout(id: Int): LiveData<Workout> =
@@ -36,6 +36,6 @@ class WorkoutRepository @Inject constructor(
 
     fun getCategories(): Flow<List<WorkoutCategory>> =
         wrapEspressoIdlingResource {
-            categoryDao.getCategories().flowOn(Dispatchers.Default)
+            categoryDao.getCategories().flowOn(Dispatchers.IO)
         }
 }
