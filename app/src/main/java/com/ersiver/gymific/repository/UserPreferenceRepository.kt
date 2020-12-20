@@ -1,14 +1,10 @@
 package com.ersiver.gymific.repository
 
-import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.preferencesKey
-import androidx.datastore.preferences.createDataStore
-import com.ersiver.gymific.util.PREFERENCE_NAME
-import dagger.hilt.android.qualifiers.ActivityContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -25,8 +21,7 @@ data class UserPreferences(val sortOrder: SortOrder)
 
 private const val SORT_KEY = "sort_order"
 
-class UserPreferenceRepository @Inject constructor(@ActivityContext context: Context) {
-    private val dataStore: DataStore<Preferences> = context.createDataStore(name = PREFERENCE_NAME)
+class UserPreferenceRepository @Inject constructor(private val dataStore: DataStore<Preferences>) {
 
     /**
      * Save a new sort order to DataStore. prefKey is always constant.
