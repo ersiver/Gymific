@@ -12,7 +12,7 @@
     <color name="color_on_secondary">#FFFFFF</color>
     <color name="color_error">#F44336</color>
     <color name="color_on_error">#FFFFFF</color>
-    <color name="color_surface">#484848</color>
+    <color name="color_surface">#282828</color>
     <color name="color_on_surface">#fafafa</color>
     <color name="color_background">#212121</color>
     <color name="color_on_background">#fafafa</color>
