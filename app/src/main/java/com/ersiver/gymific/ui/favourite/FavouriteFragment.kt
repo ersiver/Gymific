@@ -1,10 +1,13 @@
 package com.ersiver.gymific.ui.favourite
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.ersiver.gymific.R
 import com.ersiver.gymific.databinding.FragmentFavouriteBinding
@@ -17,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FavouriteFragment : Fragment() {
-    private val favouriteViewModel: FavouriteViewModel by viewModels()
+    private val favouriteViewModel: FavouriteViewModel by navGraphViewModels(R.id.mobile_navigation) { defaultViewModelProviderFactory }
     private lateinit var binding: FragmentFavouriteBinding
     private lateinit var adapter: WorkoutAdapter
     private lateinit var toolbar: Toolbar
