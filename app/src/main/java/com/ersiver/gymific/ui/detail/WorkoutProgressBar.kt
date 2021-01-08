@@ -33,7 +33,7 @@ class WorkoutProgressBar(context: Context, attrs: AttributeSet) :
         textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
         textPaint.density = res.displayMetrics.density
         textPaint.textSize = GESTURE_THRESHOLD_DP.toInt() * res.displayMetrics.scaledDensity
-        textPaint.color = ResourcesCompat.getColor(res, R.color.secondary_text_color, null)
+        textPaint.color = ResourcesCompat.getColor(res, R.color.color_secondary, null)
         textPaint.isAntiAlias = true
         textPaint.style = Paint.Style.FILL
         textPaint.textAlign = Paint.Align.CENTER

@@ -18,7 +18,7 @@
         <item name="android:colorBackground">@color/color_background</item>
         <item name="colorOnBackground">@color/color_on_background</item>
 
-        <!-- Changed navigation ans status bar color -->
+        <!-- Changed navigation and status bar color -->
         <item name="android:navigationBarColor">@color/color_status_bar</item>
         <item name="android:statusBarColor">@color/color_status_bar</item>
 
@@ -31,5 +31,3 @@
         <item name="tabStyle">@style/Widget.Gymific.TabLayout</item>
     </style>
 </resources>
-
-<!-- Theme.MaterialComponents.DayNight -->

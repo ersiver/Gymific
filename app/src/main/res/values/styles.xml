@@ -1,10 +1,4 @@
 <resources>
-    <!-- Override theme to use the custom appbar rather than supplied by window decor -->
-    <!--   <style name="GymificTheme.NoActionBar">
-           <item name="windowActionBar">false</item>
-           <item name="windowNoTitle">true</item>
-       </style>-->
-
     <!-- BottomNavigation -->
     <style name="Widget.Gymific.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
         <item name="backgroundTint">@color/color_primary</item>
