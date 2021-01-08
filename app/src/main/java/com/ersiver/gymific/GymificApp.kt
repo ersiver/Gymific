@@ -8,9 +8,6 @@ import androidx.work.WorkManager
 import com.ersiver.gymific.worker.PopulateCategoryTableWorker
 import com.ersiver.gymific.worker.PopulateWorkoutTableWorker
 import dagger.hilt.android.HiltAndroidApp
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -27,8 +24,7 @@ class GymificApp : Application(), Configuration.Provider {
     }
 
     private fun plantTimber() {
-        val applicationScope = CoroutineScope(Dispatchers.Default)
-        applicationScope.launch {
+        if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
     }
@@ -38,7 +34,7 @@ class GymificApp : Application(), Configuration.Provider {
         val populateWorkoutTable = OneTimeWorkRequestBuilder<PopulateWorkoutTableWorker>().build()
         val populateCategoryTable = OneTimeWorkRequestBuilder<PopulateCategoryTableWorker>().build()
 
-            WorkManager.getInstance(applicationContext)
+        WorkManager.getInstance(applicationContext)
             .beginWith(populateWorkoutTable)
             .then(populateCategoryTable)
             .enqueue()
