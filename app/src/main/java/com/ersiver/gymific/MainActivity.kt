@@ -24,8 +24,14 @@ class MainActivity : AppCompatActivity() {
         setupBottomNavMenu(navController)
     }
 
-    private fun setupBottomNavMenu(navController: NavController){
+    private fun setupBottomNavMenu(navController: NavController) {
         bottomNav = binding.navView
-        bottomNav.setupWithNavController(navController)
+
+        bottomNav.apply {
+            setupWithNavController(navController)
+            setOnNavigationItemReselectedListener {
+                // Do nothing to ignore the reselection
+            }
+        }
     }
 }
