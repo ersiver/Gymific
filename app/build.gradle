@@ -7,13 +7,13 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.ersiver.gymific"
         minSdkVersion 26
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
@@ -46,7 +46,7 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility "1.8"
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
@@ -86,7 +86,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
     //Room
-    def room_version = "2.2.6"
+    def room_version = "2.4.3"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
